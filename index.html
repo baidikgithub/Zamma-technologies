@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zamma Technologies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1e1e2f, #141428);
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, #2a2a40, #3c3c5e);
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #4caf50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #f5f5f5;
+            font-size: 1rem;
+            transition: color 0.3s;
+            padding: 6px;
+        }
+
+        nav a:hover {
+            color: #4caf50;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 4px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .search-bar button:hover {
+            background-color: #3e8e41;
+        }
+
+        .user-login {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #f5f5f5;
+        }
+
+        .user-login img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .main-banner {
+            background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2.5rem;
+            text-align: center;
+            padding: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+
+        .main-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .main-banner div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(46, 46, 66, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+            color: #4caf50;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .content ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .content ul li {
+            margin-bottom: 10px;
+            list-style-type: disc;
+        }
+
+        .get-in-touch {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .get-in-touch button {
+            padding: 12px 25px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s;
+        }
+
+        .get-in-touch button:hover {
+            background-color: #3e8e41;
+        }
+
+        footer {
+            background: linear-gradient(90deg, #2a2a40, #3c3c5e);
+            padding: 20px;
+            text-align: center;
+            color: #f5f5f5;
+            margin-top: 20px;
+        }
+
+        footer ul {
+            list-style: none;
+            margin: 10px 0;
+            padding: 0;
+        }
+
+        footer ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer ul li a {
+            text-decoration: none;
+            color: #4caf50;
+            transition: color 0.3s;
+        }
+
+        footer ul li a:hover {
+            color: #3e8e41;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.2s;
+            flex: 1 1 calc(33.333% - 40px);
+            max-width: calc(33.333% - 40px);
+            margin: 10px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 15px;
+            margin: 0;
+            font-size: 1.25rem;
+            background: #f8f8f8;
+            color: #333333;
+        }
+
+        .card p {
+            color: #141428;
+            padding: 15px;
+            margin: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card p ul {
+            color: black;
+        }
+
+        #services h2 {
+            margin-bottom: 20px;
+            color: #4caf50;
+            text-transform: uppercase;
+            text-align: center;
+
+        }
+
+        .card ul li {
+            color: black;
+        }
+
+        .business-hours {
+            margin-top: 10px;
+        }
+
+        .business-hours h3 {
+            font-size: 1.5rem;
+            color: #e4dede;
+            
+        }
+
+        .business-hours p {
+            font-size: 1rem;
+            color: #e4dcdc;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Zamma Technologies</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#mission">Mission</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" placeholder="Search here...">
+            <button>🔍</button>
+        </div>
+        <div class="user-login">
+            <span>User</span>
+            <img src="https://via.placeholder.com/40" alt="User Avatar">
+        </div>
+    </header>
+    <div class="main-banner">
+        <div>Welcome to Zamma Technologies</div>
+    </div>
+
+    <div id="about" class="content">
+        <h2>About Zamma Technologies</h2>
+        <p>Zamma Technologies stands at the forefront of FinTech innovation, revolutionizing the financial securities
+            trading landscape through advanced technological solutions. We combine sophisticated trading algorithms with
+            intuitive user interfaces to deliver professional-grade trading tools that transform complex trading
+            operations into streamlined, efficient processes. Our commitment to technological excellence and user
+            experience has positioned us as a trusted partner in the financial trading ecosystem.</p>
+    </div>
+    <div id="mission" class="content">
+        <h2>Our Mission</h2>
+        <p>To democratize advanced trading technology by providing sophisticated yet accessible tools that enable market
+            participants to maximize their potential in the financial markets. We believe in breaking down technological
+            barriers while maintaining the highest standards of trading execution and analysis capabilities.</p>
+    </div>
+
+    <section id="services">
+        <h2>Product Portfolio</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?web,design" alt="">
+
+                <h3>Backtrader</h3>
+                <p>
+                    Backtrader is a revolutionary no-code backtesting platform redefining strategy testing and
+                    validation:
+                </p>
+                <p>
+                <ul>
+                    <li>1. Drag-and-Drop Interface: Effortlessly build strategies with an intuitive interface.</li>
+                    <li>2. 100+ Built-In Indicators: Leverage a wide range of indicators for in-depth analysis.</li>
+                    <li>3. Advanced Risk Metrics and Reporting: Gain insights with comprehensive risk assessments and
+                        detailed reports.</li>
+                </ul>
+                </p>
+
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?development" alt="">
+                <h3>Apache Trading Platform</h3>
+                <p>
+                    A state-of-the-art automated trading platform engineered for speed, precision, and reliability in
+                    modern markets.
+                </p>
+                <p>
+                <ul>
+                    <li>1. Low-Latency Order Execution: Execute orders with lightning-fast precision.</li>
+                    <li>2. Real-Time Market Data Integration: Stay informed with seamless access to live market data.
+                    </li>
+                    <li>3..Comprehensive Risk Management Tools: Mitigate risks with robust and reliable risk management
+                        solutions.</li>
+                </ul>
+                </p>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/400x300/?seo" alt="">
+                <h3>Zamma Marketplace</h3>
+                <p>
+                    A revolutionary ecosystem connecting traders with SEBI-authorized investment advisors, creating a
+                    unique platform for strategy distribution and monetization.
+
+                </p>
+                <p>
+                <ul>
+                    <li>Curated Collection of Strategies: Explore a diverse range of automated trading strategies from
+                        trusted experts.</li>
+                    <li>Secure Subscription Management: Easily manage subscriptions with a secure, user-friendly system.
+                    </li>
+                    <li>Revenue Generation for Advisors: Empower investment advisors with opportunities to monetize
+                        their expertise.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+    </section>
+    <div id="products" class="content">
+        <h2>Why Choose Zamma?</h2>
+        <p><strong>1. Innovation:</strong> We harness the power of cutting-edge advancements in trading technology,
+            integrating machine learning algorithms and advanced statistical models to offer superior trading
+            capabilities tailored to modern market demands.</p>
+
+        <p><strong>2. Accessibility:</strong> Trading technology should be for everyone. Our no-code platforms make
+            sophisticated trading tools accessible to users of all technical backgrounds without compromising
+            functionality or performance.</p>
+
+        <p><strong>3. Reliability:</strong> Built on enterprise-grade technology stacks, our infrastructure ensures
+            99.9% uptime and millisecond-level response times. With redundant systems and robust failover mechanisms in
+            place, we guarantee seamless and uninterrupted trading operations.</p>
+        <p><strong>4. Compliance:</strong> Adhering strictly to regulatory requirements, all our systems align with SEBI
+            guidelines. Our platforms feature built-in compliance checks and comprehensive documentation capabilities,
+            giving you peace of mind.</p>
+        <p><strong>5. Support:</strong> Our dedicated support team, comprising technical experts and trading
+            specialists, offers comprehensive assistance across all platforms. We provide 24/5 support coverage during
+            market hours to ensure you’re never alone in your trading journey.</p>
+    </div>
+    <div id="contact" class="get-in-touch">
+        <h2>Get in Touch</h2>
+        <p>Our team of experts is ready to help you transform your trading operations with our advanced technological
+            solutions.</p>
+        <div class="business-hours">
+            <h4>Business Hours</h4>
+            <p>Monday - Friday: 9:00 AM - 6:00 PM IST</p>
+            <p>Professional support and consultation available during all market hours.</p>
+            <p>Emergency technical support available 24/5 for our enterprise clients.</p>
+        </div>
+        <br>
+        <p>Email: zammatechnologies@gmail.com</p>
+        <p>Phone: +91 8787476601 | +91 9678543621
+        </p>
+        <button>Contact Us</button>
+    </div>
+    <footer>
+        <p>&copy; 2024 Zamma Technologies. All rights reserved.</p>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div>
+            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://twitter.com" target="_blank">Twitter</a> |
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+
+</html>
